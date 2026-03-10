@@ -7,13 +7,14 @@
 
 <br>
 
-**입력 중 실시간 필터링**과 **포커스 아웃(blur) 시 유효성 검증**을 표준 이벤트 기반으로 처리하는 초경량 Vanilla JS 라이브러리입니다.
+> **입력 중 실시간 필터링**과 **포커스 아웃(blur) 시 유효성 검증**을 표준 이벤트 기반으로 처리하는 초경량 Vanilla JS 라이브러리입니다.
 
 ![Demo GIF](https://github.com/user-attachments/assets/a91423c5-699b-46d6-98e1-655644be8e23)
 
 <img width="800" height="502" alt="image" src="https://github.com/user-attachments/assets/f946735a-bea8-4906-9306-1c8f6f605a15" />
 
-
+<br>
+<br>
 
 ## ⚡ Quick Start
 별도의 빌드 과정 없이 CDN을 통해 즉시 시작하세요.
@@ -27,6 +28,8 @@
 </script>
 ```
 
+<br>
+<br>
 
 ## ✨ Key Features
 * **Dual Action**: 실시간 필터링(`input`)과 형식 검증(`blur`)의 완벽한 분리.
@@ -34,6 +37,8 @@
 * **Lightweight**: 외부 의존성 0%, 100% 순수 자바스크립트로 최상의 성능 제공.
 * **Extensible**: 정규식 및 함수형 검증을 통해 복잡한 비즈니스 로직도 유연하게 처리.
 
+<br>
+<br>
 
 ## 💡 Configuration
 생성자의 두 번째 인자로 옵션을 설정하여 라이브러리의 동작을 제어할 수 있습니다.
@@ -45,6 +50,8 @@
 | `validate.regexp` | 검증용 커스텀 정규식 | `null` |
 | `selector` | 부모 요소 내 적용할 타겟 셀렉터 | `input, textarea` |
 
+<br>
+<br>
 
 ## 💡 Advanced Usage
 * **한글 필수 입력 필드**
@@ -82,3 +89,9 @@ customValidate.addEventListener('error', e => {
     e.target.classList.add('danger');
 });
 ```
+
+<br>
+<br>
+
+## 📝 License
+This project is licensed under the MIT License.
