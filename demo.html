@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Kok Input Filter Demo</title>
+
+        <!-- Meta Tags -->
+        <meta charset="UTF-8"/> <!-- 문자 인코딩 설정 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- 반응형 웹 설정 -->
+        <meta name="format-detection" content="telephone=no"/> <!-- 전화번호 자동 감지 비활성화 -->
+        <meta name="robots" content="index, follow"/> <!-- 검색 엔진 크롤링 설정 -->
+        <meta name="title" content="프로젝트명"/> <!-- 제목 설정 -->
+        <meta name="description" content="프로젝트설명"/> <!-- 설명 설정 -->
+        <meta name="keywords" content="키워드"/> <!-- 키워드 설정 -->
+        <meta name="author" content="attickok"/> <!-- 작성자 설정 -->
+
+        <!-- Open Graph Meta Tags(SNS 공유) -->
+        <meta property="og:type" content="website" /> <!-- 타입 설정 -->
+        <meta property="og:title" content="프로젝트명" /> <!-- 제목 설정 -->
+        <meta property="og:description" content="프로젝트설명" /> <!-- 설명 설정 -->
+        <meta property="og:image" content="./assets/images/thumbnail.png" /> <!-- 이미지 설정 -->
+        <meta property="og:url" content="project_url" /> <!-- URL 설정 -->
+
+        <!-- Progressive Web App -->
+        <link rel="manifest" href="/manifest.json">
+
+        <!-- Favicon Links -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png"> <!-- 16x16 파비콘 -->
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png"> <!-- 32x32 파비콘 -->
+        <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicons/favicon-64x64.png"> <!-- 64x64 파비콘 -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/favicon-180x180.png"> <!-- 애플 터치 아이콘 -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+
+        <!-- CSS Stylesheet -->
+        <link rel="stylesheet" href="./styles/main.css">
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>필터 & 검증 데모</h3>
+        <input type="text" id="nameField" placeholder="한글만 필수 입력 (Filter)">
+        <input type="text" id="intField" placeholder="숫자만 입력 가능 (Filter)">
+        <input type="text" id="emailField" placeholder="이메일 형식 검증 (Blur)">
+        <input type="text" id="customValidate" placeholder="숫자 3자리 이상 (Blur)">
+
+        <div id="group-container">
+            <input type="text" class="target-input" placeholder="영어만 그룹 내 1">
+            <input type="text" class="target-input" placeholder="영어만 그룹 내 2">
+        </div>
+
+        <!-- scripts-->
+        <script src="./kok-input-filter.js"></script>
+        <script>
+            new KokInputFilter("#nameField", { type: "korean", required: true });
+            nameField.addEventListener('input', e => {
+                e.target.classList.remove('success', 'danger');
+            });
+            nameField.addEventListener('success', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('success');
+            });
+            nameField.addEventListener('error', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('danger');
+            });
+
+            new KokInputFilter("#intField", { type: "int" });
+
+            new KokInputFilter("#emailField", { type: "email" });
+            emailField.addEventListener('input', e => {
+                e.target.classList.remove('success', 'danger');
+            });
+            emailField.addEventListener('success', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('success');
+            });
+            emailField.addEventListener('error', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('danger');
+            });
+
+            new KokInputFilter("#customValidate", { 
+                validate: { 
+                    regexp: /^[0-9]{3,}$/
+                }
+            });
+            customValidate.addEventListener('input', e => {
+                e.target.classList.remove('success', 'danger');
+            });
+            customValidate.addEventListener('success', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('success');
+            });
+            customValidate.addEventListener('error', e => {
+                e.target.classList.remove('success', 'danger');
+                e.target.classList.add('danger');
+            });
+
+            new KokInputFilter("#group-container", { 
+                selector: ".target-input",
+                type: "alpha" 
+            });
+        </script>
+    </body>
+</html>
