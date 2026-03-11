@@ -19,7 +19,7 @@
 ## ⚡ Quick Start
 별도의 빌드 과정 없이 CDN을 통해 즉시 시작하세요.
 ```html
-<script src="https://cdn.jsdelivr.net/gh/attickok/kok-input-filter@main/kok-input-filter.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Arma75/kok-input-filter@main/kok-input-filter.js"></script>
 
 <input type="text" id="intField" placeholder="숫자만 입력">
 
